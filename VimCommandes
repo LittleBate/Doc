@@ -1,0 +1,153 @@
+Commandes Vim :
+
+Delete : 
+	dd : supprime la ligne courante
+	dw : supprime le mot courant
+	db : supprime de la position actuelle jusqu'au début du mot
+	x : supprime le caractère courant
+
+Screen Move :
+	z. / zz: positionne l'écran de manière à ce que la ligne courante soit au centre de l'écran
+	z+ / zt : positionne l'écran de manière à ce que la ligne courante soit en haut de l'ecran
+	z- / tb : positionne l'écran de manière à ce que la ligne courante soit en bas de l'ecran
+
+Move : 
+	$ : fin de ligne
+	^ : Début de ligne
+	b : début du mot courant ou précédant
+	w : début du mot suivant
+	e : fin du mot
+	nG : va à la ligne n
+	gg : debut du document
+	G : fin du document
+	h : caractère de gauche
+	j : ligne du bas
+	k : ligne du haut
+	l : caractère de droite
+	nj : se déplace de n ligne en bas 
+	nk : se déplace de n ligne en haut
+	nh : se déplace de n car. vers la gauche
+	nl : se déplace de n car. vers la droite
+	H : va en haut de l'écran
+	M : va au lilieu de l'écran
+	L : va en bas de l'écran
+	n% : va va à la ligne qui correspond à n% du texte du fichier
+	n| : va à la colonne n de la ligne 
+	* : va a la prochaine occurence du mo sous le curseur
+	fx : va a la prochaine occurence de 'x'
+	Fx : va a la precedente occurence de 'x'
+	* : se deplace jusqu'a la prochaine occurence du mot sous le curseur
+	# : se deplace à l'occurence precedente du mot sous le curseur
+	`. : se deplace jusqu'a la derniere ligne edite
+	gd : va a la ligne de declaration d'une variable
+	{ : met le curseur avant le paragraphe courant
+	} : met le curseur avant le paragraphe suivant
+
+Copy :
+	yy : copie la ligne
+	yw : copie le mot
+	y$ : copie la fin de la ligne
+	y^ : copie le début de ligne
+	ygg : copie le début du document
+	yG : copie la fin du document
+	nY : copie n lignes
+
+Paste : 
+	p : coller après la position actuelle
+	P : coller avant le curseur
+	]p : comme p mais colle le texte et adapte l'indentation 
+
+Search : 
+	/x : recherche la chaine x
+	?x : recherche la chaine x vers le haut
+	n : élément suivant
+	N : element précédent
+	k : cherche la doc du mot sous le curseur
+
+Special Insert :
+	:%s/^/toto/ : insert toto au debut de chaque ligne
+	:10,20s/^/toto/ : insert toto au debut des lignes entre 10 et 20
+	:%s/$/toto/ : ajoute "toto" à la fin de chaque ligne 
+
+Replace : 
+	:n,ms\old\new\g : change entre les ligne n et m la chaine "old" par la chaine "new"
+	:%s\old\new\g : change dans tous le document la chaine "old"par la cahine "new"
+	:s\old\new\g : change la chaine "old"par la chaine "new" sur la ligne
+	:.,$s/old/new/g : change la chaine old par la chaine new entre le ligne courrante et la fin du document
+	:.,+2s/old/new/g : change la chaine old par la chaine new sur la line courrante et le deux suivante
+	:6,10s/old/new/g | 14,18&& : replacement entre les lignes 6 et 10 puis entre les lignes 14 et 18
+	cc : remplace la ligne
+	cw : remplace la fin du mot
+	cb : remplace le debut du mot
+	C : remplace la fin de la ligne
+	s : remplace la caractère sous le curseur
+
+Changing case:
+	gUU : passe toute la ligne en majuscule
+	guu : passe toute la ligne en minuscule 
+	g~~ : inverse la case de toute a ligne
+	gu/U/~w : le changement de case défint jusqu'au mot suivant
+	gu/U/~e : le changement de case défint sur la fin du mot
+	gu/U/~b : le changement de case défint sur un sur le debut du mot
+	gu/U/~$ : le changement de case défint sur la fin de la ligne
+	gu/U/~^ : le changement de case défint sur le debut de la ligne
+	gu/U/~iw : le changement de case défint sur le mot courant
+
+Mode insertion :
+	i : mode insertion avant le curseur
+	a : mode insertion après le curseur
+	o : mode insertion en créant une ligne sous le curseur
+	O : mode insertion en créant une ligne au dessus du curseur
+	A : mode insertion en fin de ligne
+	I : mode insertion en début de ligne
+
+Other : 
+	u : undo
+	R : mode remplacement
+	:w : sauvegarder
+	:wq : sauvegarder puis quitter
+	:x : sauvegarde si modifié et quitte vi
+	:q! : quitter sans sauvegarder
+	= : met en forme un programme
+	== : indente la ligne
+	J : attache la ligne suivante à la ligne courante sans espace
+	:new : cree une nouvelle fenetre vim
+	:new FileName.txt : ouvre le fichier donne dans une nouvelle fenetre vim
+
+Astuce : 
+	vp : passe en mode visuel puis colle
+		-> colle le dernier texte copier à la place du curseur
+		-> sans memoriser le texte supprimer
+
+Regex :
+	[a-z] : caractère de a à z
+	[0-9] : chiffres de 0 à 9
+	? : 0 ou 1
+	+ : 1 ou plus
+	* : 0, 1 ou plusieurs
+	{n} : n fois exactement
+	{n,m} : de n à m fois
+	{n,} : n fois ou plus
+	\ : supprime le fonctionnement particulier du caractère (*, +, ., ?, ...)
+	. : tous caractères
+	\s : espace blanc(\t \n \r)
+	\S : non espace blanc
+	\w : [a-zA-Z0-9]
+	\W : [^a-zA-Z0-9]
+	\d : [0-9]
+	\D : [^0-9]
+	[^] : inverse ([^0-9] pas de chiffre)
+	^ : debut de chaine (^[0-9] chaine commencant par un chiffre)
+	$ : fin de chaine ([0-9]$ chaine terminant par un chiffre)
+	(n) : () permet de créer un bout de regex stocké dans une variable $1, $2,
+	... pouvant être reutilise
+	| : alternative (a | b : a ou b)
+	[[:alpha:]] : n'importe quelle lettre
+	[[:digit:]] : n'importe quel chiffre
+	[[:xdigit:]] : caractères héxadecimaux
+	[[:alnum:]] : n'umporte quelle lettre ou chiffre
+	[[:space:]] : n'importe quel espace blanc
+	[[:punct:]] : n'importe quel signe de ponctuation
+	[[:lower:]] : minuscule
+	[[:upper:]] : capital
+	[[:blank:]] : espace ou tab
